@@ -7,6 +7,7 @@ class GeneralForm extends Component {
         <label>
           First Name:
           <input
+            required
             type="text"
             placeholder="First Name"
             name="firstName"
@@ -17,6 +18,7 @@ class GeneralForm extends Component {
         <label>
           Last Name:
           <input
+            required
             type="text"
             placeholder="Last Name"
             name="lastName"
@@ -27,6 +29,7 @@ class GeneralForm extends Component {
         <label>
           Email:
           <input
+            required
             type="email"
             placeholder="example@email.com"
             name="email"
@@ -37,6 +40,7 @@ class GeneralForm extends Component {
         <label>
           Phone:
           <input
+            required
             type="tel"
             placeholder="123-456-7890"
             name="phone"
