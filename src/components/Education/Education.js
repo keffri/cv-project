@@ -105,7 +105,8 @@ class Education extends Component {
     const { editing } = this.state;
 
     return (
-      <div>
+      <div className="education">
+        <h1 className="education__h1">Education</h1>
         <EducationData
           educationList={this.state.educationList}
           delete={this.deleteEducation}
