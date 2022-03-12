@@ -9,7 +9,14 @@ class Education extends Component {
 
     this.state = {
       editing: false,
-      education: { school: "", major: "", start: "", end: "", id: uniqid() },
+      education: {
+        school: "",
+        major: "",
+        start: "",
+        end: "",
+        id: uniqid(),
+        editing: false,
+      },
       educationList: [],
     };
 
@@ -17,6 +24,8 @@ class Education extends Component {
     this.addEducation = this.addEducation.bind(this);
     this.saveEducation = this.saveEducation.bind(this);
     this.deleteEducation = this.deleteEducation.bind(this);
+    this.edit = this.edit.bind(this);
+    this.save = this.save.bind(this);
   }
 
   handleChange(e) {
@@ -41,7 +50,14 @@ class Education extends Component {
     const education = this.state.education;
     this.setState((prevState) => ({
       editing: !prevState.editing,
-      education: { school: "", major: "", start: "", end: "", id: uniqid() },
+      education: {
+        school: "",
+        major: "",
+        start: "",
+        end: "",
+        id: uniqid(),
+        editing: false,
+      },
       educationList: [...prevState.educationList, education],
     }));
   }
@@ -55,6 +71,36 @@ class Education extends Component {
     });
   }
 
+  edit(id) {
+    const eduList = [...this.state.educationList];
+
+    let currentEducation = eduList.filter((edu) => edu.id === id)[0];
+    const currentEducationIndex = eduList.indexOf(currentEducation);
+    currentEducation.editing = !currentEducation.editing;
+
+    eduList[currentEducationIndex] = currentEducation;
+
+    this.setState({
+      ...this.state,
+      educationList: eduList,
+    });
+  }
+
+  save(id, state) {
+    const eduList = [...this.state.educationList];
+
+    let currentEducation = eduList.filter((edu) => edu.id === id)[0];
+    const currentEducationIndex = eduList.indexOf(currentEducation);
+    currentEducation = { ...state, editing: !currentEducation.editing };
+
+    eduList[currentEducationIndex] = currentEducation;
+
+    this.setState({
+      ...this.state,
+      educationList: eduList,
+    });
+  }
+
   render() {
     const { editing } = this.state;
 
@@ -63,6 +109,8 @@ class Education extends Component {
         <EducationData
           educationList={this.state.educationList}
           delete={this.deleteEducation}
+          edit={this.edit}
+          save={this.save}
         />
         {editing && (
           <EducationForm data={this.state} handleChange={this.handleChange} />
