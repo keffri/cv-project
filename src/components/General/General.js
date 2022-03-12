@@ -35,6 +35,7 @@ class General extends Component {
 
     return (
       <div className="general">
+        <h1 className="general__h1">General Information</h1>
         {this.state.editing ? (
           <GeneralForm
             firstName={firstName}
