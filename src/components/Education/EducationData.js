@@ -1,18 +1,27 @@
+import EditingEducation from "./EducationEditing/EditingEducation";
+import EditedEducation from "./EducationEditing/EditedEducation";
+
 import React, { Component } from "react";
 
 class EducationData extends Component {
   render() {
     return (
-      <div>
+      <div className="education__data">
         {this.props.educationList.map((edu) => {
-          return (
-            <div key={edu.id}>
-              <p>{edu.school}</p>
-              <p>{edu.major}</p>
-              <p>{edu.start}</p>
-              <p>{edu.end}</p>
-              <button onClick={() => this.props.delete(edu.id)}>Delete</button>
-            </div>
+          return edu.editing ? (
+            <EditingEducation
+              key={edu.id}
+              id={edu.id}
+              data={edu}
+              save={this.props.save}
+            />
+          ) : (
+            <EditedEducation
+              key={edu.id}
+              id={edu.id}
+              data={edu}
+              edit={this.props.edit}
+            />
           );
         })}
       </div>
