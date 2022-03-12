@@ -1,8 +1,31 @@
+import EditingExperience from "./ExperienceEditing/EditingExperience";
+import EditedExperience from "./ExperienceEditing/EditedExperience";
+
 import React, { Component } from "react";
 
 class ExperienceData extends Component {
   render() {
-    return <div>Experience Data</div>;
+    return (
+      <div className="experience__data">
+        {this.props.experienceList.map((exp) => {
+          return exp.editing ? (
+            <EditingExperience
+              key={exp.id}
+              id={exp.id}
+              data={exp}
+              save={this.props.save}
+            />
+          ) : (
+            <EditedExperience
+              key={exp.id}
+              id={exp.id}
+              data={exp}
+              edit={this.props.edit}
+            />
+          );
+        })}
+      </div>
+    );
   }
 }
 
