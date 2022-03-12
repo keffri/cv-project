@@ -3,7 +3,7 @@ import React, { Component } from "react";
 class EducationForm extends Component {
   render() {
     return (
-      <div>
+      <div className="education__form">
         <label>
           School:
           <input
