@@ -21,6 +21,7 @@ class EducationData extends Component {
               id={edu.id}
               data={edu}
               edit={this.props.edit}
+              delete={this.props.delete}
             />
           );
         })}
