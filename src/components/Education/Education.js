@@ -48,6 +48,10 @@ class Education extends Component {
   saveEducation(e) {
     e.preventDefault();
     const education = this.state.education;
+    if (!education.school || !education.major || !education.start) {
+      alert("Please complete the entire form.");
+      return;
+    }
     this.setState((prevState) => ({
       editing: !prevState.editing,
       education: {
@@ -87,9 +91,14 @@ class Education extends Component {
   }
 
   save(id, state) {
+    if (!state.school || !state.major || !state.start) {
+      alert("Please complete the entire form.");
+      return;
+    }
     const eduList = [...this.state.educationList];
 
     let currentEducation = eduList.filter((edu) => edu.id === id)[0];
+
     const currentEducationIndex = eduList.indexOf(currentEducation);
     currentEducation = { ...state, editing: !currentEducation.editing };
 
