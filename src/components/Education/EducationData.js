@@ -6,7 +6,7 @@ import React, { Component } from "react";
 class EducationData extends Component {
   render() {
     return (
-      <div className="education__data">
+      <div className="educationData">
         {this.props.educationList.map((edu) => {
           return edu.editing ? (
             <EditingEducation

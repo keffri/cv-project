@@ -20,38 +20,42 @@ class EditingEducation extends Component {
 
   render() {
     return (
-      <div key={this.props.id}>
-        <form>
-          <label>
+      <div className="educationEditing">
+        <form className="educationEditing__form">
+          <label className="educationEditing__label">
             School:
             <input
+              className="educationEditing__input"
               type="text"
               name="school"
               value={this.state.school}
               onChange={this.handleChange}
             />
           </label>
-          <label>
+          <label className="educationEditing__label">
             Major:
             <input
+              className="educationEditing__input"
               type="text"
               name="major"
               value={this.state.major}
               onChange={this.handleChange}
             />
           </label>
-          <label>
+          <label className="educationEditing__label">
             Date:
             <input
+              className="educationEditing__input"
               type="date"
               name="start"
               value={this.state.start}
               onChange={this.handleChange}
             />
           </label>
-          <label>
+          <label className="educationEditing__label">
             End:
             <input
+              className="educationEditing__input"
               type="date"
               name="end"
               value={this.state.end}
@@ -59,7 +63,10 @@ class EditingEducation extends Component {
             />
           </label>
         </form>
-        <button onClick={() => this.props.save(this.props.id, this.state)}>
+        <button
+          className="educationEditing__button"
+          onClick={() => this.props.save(this.props.id, this.state)}
+        >
           Save
         </button>
       </div>

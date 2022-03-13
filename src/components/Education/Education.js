@@ -117,9 +117,13 @@ class Education extends Component {
           <EducationForm data={this.state} handleChange={this.handleChange} />
         )}
         {!editing ? (
-          <button onClick={this.addEducation}>Add</button>
+          <button className="education__button" onClick={this.addEducation}>
+            Add
+          </button>
         ) : (
-          <button onClick={this.saveEducation}>Save</button>
+          <button className="education__button" onClick={this.saveEducation}>
+            Save
+          </button>
         )}
       </div>
     );
