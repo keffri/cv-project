@@ -33,7 +33,7 @@ class General extends Component {
       !this.state.phone ||
       !this.state.email
     ) {
-      alert("Please complete the form.");
+      alert("Please complete the entire form.");
       return;
     }
     this.setState((prevState) => ({ editing: !prevState.editing }));
