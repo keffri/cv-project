@@ -10,6 +10,7 @@ class EditedExperience extends Component {
         <p>End: {this.props.data.end}</p>
         <p>Duties: {this.props.data.duties}</p>
         <button onClick={() => this.props.edit(this.props.id)}>Edit</button>
+        <button onClick={() => this.props.delete(this.props.id)}>Delete</button>
       </div>
     );
   }

@@ -21,6 +21,7 @@ class ExperienceData extends Component {
               id={exp.id}
               data={exp}
               edit={this.props.edit}
+              delete={this.props.delete}
             />
           );
         })}
