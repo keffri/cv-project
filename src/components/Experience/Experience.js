@@ -50,6 +50,16 @@ class Experience extends Component {
   saveExperience(e) {
     e.preventDefault();
     const experience = this.state.experience;
+    if (
+      !experience.company ||
+      !experience.position ||
+      !experience.start ||
+      !experience.duties
+    ) {
+      alert("Please complete the entire form.");
+      return;
+    }
+
     this.setState((prevState) => ({
       editing: !prevState.editing,
       experience: {
@@ -90,6 +100,10 @@ class Experience extends Component {
   }
 
   save(id, state) {
+    if (!state.company || !state.position || !state.start || !state.duties) {
+      alert("Please complete the entire form.");
+      return;
+    }
     const expList = [...this.state.experienceList];
 
     let currentExperience = expList.filter((exp) => exp.id === id)[0];
