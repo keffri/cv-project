@@ -3,11 +3,12 @@ import React, { Component } from "react";
 class ExperienceForm extends Component {
   render() {
     return (
-      <div className="experience__form">
-        <form>
-          <label>
+      <div className="experienceForm">
+        <form className="experienceForm__form">
+          <label className="experienceForm__label">
             Company:
             <input
+              className="experienceForm__input"
               required
               type="text"
               name="company"
@@ -15,9 +16,10 @@ class ExperienceForm extends Component {
               onChange={this.props.handleChange}
             />
           </label>
-          <label>
+          <label className="experienceForm__label">
             Position:
             <input
+              className="experienceForm__input"
               required
               type="text"
               name="position"
@@ -25,9 +27,10 @@ class ExperienceForm extends Component {
               onChange={this.props.handleChange}
             />
           </label>
-          <label>
+          <label className="experienceForm__label">
             Start:
             <input
+              className="experienceForm__input"
               required
               type="date"
               name="start"
@@ -35,18 +38,20 @@ class ExperienceForm extends Component {
               onChange={this.props.handleChange}
             />
           </label>
-          <label>
+          <label className="experienceForm__label">
             End:
             <input
+              className="experienceForm__input"
               type="date"
               name="end"
               value={this.props.data.experience.end}
               onChange={this.props.handleChange}
             />
           </label>
-          <label>
+          <label className="experienceForm__label">
             Duties:
             <input
+              className="experienceForm__input"
               required
               type="text"
               name="duties"

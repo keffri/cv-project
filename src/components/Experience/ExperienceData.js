@@ -6,7 +6,7 @@ import React, { Component } from "react";
 class ExperienceData extends Component {
   render() {
     return (
-      <div className="experience__data">
+      <div className="experienceData">
         {this.props.experienceList.map((exp) => {
           return exp.editing ? (
             <EditingExperience

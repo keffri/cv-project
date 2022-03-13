@@ -119,9 +119,13 @@ class Experience extends Component {
           <ExperienceForm data={this.state} handleChange={this.handleChange} />
         )}
         {!editing ? (
-          <button onClick={this.addExperience}>Add</button>
+          <button className="experience__button" onClick={this.addExperience}>
+            Add
+          </button>
         ) : (
-          <button onClick={this.saveExperience}>Save</button>
+          <button className="experience__button" onClick={this.saveExperience}>
+            Save
+          </button>
         )}
       </div>
     );
