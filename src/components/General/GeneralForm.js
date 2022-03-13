@@ -3,10 +3,11 @@ import React, { Component } from "react";
 class GeneralForm extends Component {
   render() {
     return (
-      <form className="general__form">
-        <label>
+      <form className="generalForm">
+        <label className="generalForm__label">
           First Name:
           <input
+            className="generalForm__input"
             required
             type="text"
             placeholder="First Name"
@@ -15,9 +16,10 @@ class GeneralForm extends Component {
             value={this.props.data.firstName}
           />
         </label>
-        <label>
+        <label className="generalForm__label">
           Last Name:
           <input
+            className="generalForm__input"
             required
             type="text"
             placeholder="Last Name"
@@ -26,9 +28,10 @@ class GeneralForm extends Component {
             value={this.props.data.lastName}
           />
         </label>
-        <label>
+        <label className="generalForm__label">
           Email:
           <input
+            className="generalForm__input"
             required
             type="email"
             placeholder="example@email.com"
@@ -37,9 +40,10 @@ class GeneralForm extends Component {
             value={this.props.data.email}
           />
         </label>
-        <label>
+        <label className="generalForm__label">
           Phone:
           <input
+            className="generalForm__input"
             required
             type="tel"
             placeholder="123-456-7890"
@@ -48,7 +52,11 @@ class GeneralForm extends Component {
             value={this.props.data.phone}
           />
         </label>
-        <button type="submit" onClick={this.props.handleSubmit}>
+        <button
+          className="generalForm__button"
+          type="submit"
+          onClick={this.props.handleSubmit}
+        >
           Save
         </button>
       </form>
