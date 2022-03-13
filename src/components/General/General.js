@@ -27,6 +27,15 @@ class General extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    if (
+      !this.state.firstName ||
+      !this.state.lastName ||
+      !this.state.phone ||
+      !this.state.email
+    ) {
+      alert("Please complete the form.");
+      return;
+    }
     this.setState((prevState) => ({ editing: !prevState.editing }));
   }
 

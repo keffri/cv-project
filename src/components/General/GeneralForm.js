@@ -8,7 +8,6 @@ class GeneralForm extends Component {
           First Name:
           <input
             className="generalForm__input"
-            required
             type="text"
             placeholder="First Name"
             name="firstName"
@@ -20,7 +19,6 @@ class GeneralForm extends Component {
           Last Name:
           <input
             className="generalForm__input"
-            required
             type="text"
             placeholder="Last Name"
             name="lastName"
@@ -32,7 +30,6 @@ class GeneralForm extends Component {
           Email:
           <input
             className="generalForm__input"
-            required
             type="email"
             placeholder="example@email.com"
             name="email"
@@ -44,7 +41,6 @@ class GeneralForm extends Component {
           Phone:
           <input
             className="generalForm__input"
-            required
             type="tel"
             placeholder="123-456-7890"
             name="phone"
