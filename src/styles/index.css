@@ -178,3 +178,76 @@ body {
 .experience__button {
   align-self: center;
 }
+
+.experience__buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.experience__button {
+  align-self: center;
+  margin: 0.5rem;
+}
+
+.experienceForm {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  column-gap: 10rem;
+}
+
+.experienceForm__label {
+  display: flex;
+  flex-direction: column;
+  margin: 0.5rem 0 0.5rem 0;
+}
+
+.experienceForm__input {
+  width: 190px;
+}
+
+.experienceEdited {
+  display: flex;
+  flex-direction: column;
+}
+
+.experienceEdited__p {
+  margin: 0.25rem 0 0.25rem 2rem;
+}
+
+.experienceEdited__button {
+  align-self: center;
+}
+
+.experienceEditing {
+  display: flex;
+  flex-direction: column;
+}
+
+.experienceEditing__form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  column-gap: 8rem;
+}
+
+.experienceEditing__label {
+  display: flex;
+  flex-direction: column;
+  margin: 0.5rem 0 0.5rem 0;
+}
+
+.experienceEditing__input {
+  width: 190px;
+}
+
+.experienceEditing__button {
+  align-self: center;
+  margin: 0.5rem;
+}
+
+.experience--bold {
+  font-weight: bold;
+}
