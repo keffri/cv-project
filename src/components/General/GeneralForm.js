@@ -4,7 +4,7 @@ class GeneralForm extends Component {
   render() {
     return (
       <form className="generalForm">
-        <label className="generalForm__label">
+        <label className="generalForm__label general--bold">
           First Name:
           <input
             className="generalForm__input"
@@ -15,7 +15,7 @@ class GeneralForm extends Component {
             value={this.props.data.firstName}
           />
         </label>
-        <label className="generalForm__label">
+        <label className="generalForm__label general--bold">
           Last Name:
           <input
             className="generalForm__input"
@@ -26,7 +26,7 @@ class GeneralForm extends Component {
             value={this.props.data.lastName}
           />
         </label>
-        <label className="generalForm__label">
+        <label className="generalForm__label general--bold">
           Email:
           <input
             className="generalForm__input"
@@ -37,7 +37,7 @@ class GeneralForm extends Component {
             value={this.props.data.email}
           />
         </label>
-        <label className="generalForm__label">
+        <label className="generalForm__label general--bold">
           Phone:
           <input
             className="generalForm__input"
