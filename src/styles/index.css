@@ -6,3 +6,77 @@ html,
 body {
   min-height: 100%;
 }
+
+#id {
+  height: 100vh;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/***** GENERAL *****/
+
+.general {
+  min-height: 225px;
+  width: 800px;
+  background-color: #aaa;
+}
+
+.general__h1 {
+  text-align: center;
+  text-decoration: underline;
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.generalForm {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  column-gap: 12em;
+}
+
+.generalForm__label {
+  display: flex;
+  flex-direction: column;
+  margin: 0.5rem 0 0.5rem 0;
+}
+
+.generalForm__button {
+  margin-top: 1rem;
+}
+
+/***** EDUCATION *****/
+
+.education {
+  min-height: 100px;
+  width: 800px;
+  background-color: #bbb;
+}
+
+.education__h1 {
+  text-align: center;
+  text-decoration: underline;
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+/***** EXPERIENCE *****/
+
+.experience {
+  min-height: 100px;
+  width: 800px;
+  background-color: #ccc;
+}
+
+.experience__h1 {
+  text-align: center;
+  text-decoration: underline;
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
