@@ -73,7 +73,10 @@ class EditingExperience extends Component {
             />
           </label>
         </form>
-        <button onClick={() => this.props.save(this.props.id, this.state)}>
+        <button
+          className="experienceEditing__button"
+          onClick={() => this.props.save(this.props.id, this.state)}
+        >
           Save
         </button>
       </div>

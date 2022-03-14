@@ -86,7 +86,18 @@ class Experience extends Component {
   }
 
   cancel() {
-    this.setState((prevState) => ({ editing: !prevState.editing }));
+    this.setState((prevState) => ({
+      editing: !prevState.editing,
+      experience: {
+        company: "",
+        position: "",
+        start: "",
+        end: "",
+        duties: "",
+        id: uniqid(),
+        editing: false,
+      },
+    }));
   }
 
   edit(id) {
@@ -142,7 +153,7 @@ class Experience extends Component {
             Add
           </button>
         ) : (
-          <div>
+          <div className="experience__buttons">
             <button
               className="experience__button"
               onClick={this.saveExperience}
