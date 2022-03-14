@@ -7,11 +7,7 @@ body {
   min-height: 100%;
 }
 
-#id {
-  height: 100vh;
-}
-
-.app {
+#root {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -24,6 +20,9 @@ body {
   min-height: 225px;
   width: 600px;
   background-color: #aaa;
+  border-top: 2px solid #000;
+  border-left: 2px solid #000;
+  border-right: 2px solid #000;
 }
 
 .general__h1 {
@@ -76,6 +75,8 @@ body {
   background-color: #bbb;
   display: flex;
   flex-direction: column;
+  border-left: 2px solid #000;
+  border-right: 2px solid #000;
 }
 
 .education__h1 {
@@ -166,6 +167,9 @@ body {
   background-color: #ccc;
   display: flex;
   flex-direction: column;
+  border-left: 2px solid #000;
+  border-right: 2px solid #000;
+  border-bottom: 2px solid #000;
 }
 
 .experience__h1 {
