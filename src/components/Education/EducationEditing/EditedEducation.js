@@ -4,10 +4,21 @@ class EditedEducation extends Component {
   render() {
     return (
       <div className="educationEdited">
-        <p className="educationEdited__p">School: {this.props.data.school}</p>
-        <p className="educationEdited__p">Major: {this.props.data.major}</p>
-        <p className="educationEdited__p">Start: {this.props.data.start}</p>
-        <p className="educationEdited__p">End: {this.props.data.end}</p>
+        <p className="educationEdited__p">
+          <span className="education--bold">School:</span>{" "}
+          {this.props.data.school}
+        </p>
+        <p className="educationEdited__p">
+          <span className="education--bold">Major:</span>{" "}
+          {this.props.data.major}
+        </p>
+        <p className="educationEdited__p">
+          <span className="education--bold">Start:</span>{" "}
+          {this.props.data.start}
+        </p>
+        <p className="educationEdited__p">
+          <span className="education--bold">End:</span> {this.props.data.end}
+        </p>
         <button
           className="educationEdited__button"
           onClick={() => this.props.edit(this.props.id)}
