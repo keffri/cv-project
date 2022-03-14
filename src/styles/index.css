@@ -74,6 +74,8 @@ body {
   min-height: 100px;
   width: 600px;
   background-color: #bbb;
+  display: flex;
+  flex-direction: column;
 }
 
 .education__h1 {
@@ -83,12 +85,87 @@ body {
   margin-bottom: 10px;
 }
 
+.education__buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.education__button {
+  align-self: center;
+  margin: 0.5rem;
+}
+
+.educationForm {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  column-gap: 10rem;
+}
+
+.educationForm__label {
+  display: flex;
+  flex-direction: column;
+  margin: 0.5rem 0 0.5rem 0;
+}
+
+.educationForm__input {
+  width: 190px;
+}
+
+.educationEdited {
+  display: flex;
+  flex-direction: column;
+}
+
+.educationEdited__p {
+  margin: 0.25rem 0 0.25rem 2rem;
+}
+
+.educationEdited__button {
+  align-self: center;
+}
+
+.educationEditing {
+  display: flex;
+  flex-direction: column;
+}
+
+.educationEditing__form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  column-gap: 8rem;
+}
+
+.educationEditing__label {
+  display: flex;
+  flex-direction: column;
+  margin: 0.5rem 0 0.5rem 0;
+}
+
+.educationEditing__input {
+  width: 190px;
+}
+
+.educationEditing__button {
+  align-self: center;
+  margin: 0.5rem;
+}
+
+.education--bold {
+  font-weight: bold;
+}
+
 /***** EXPERIENCE *****/
 
 .experience {
   min-height: 100px;
   width: 600px;
   background-color: #ccc;
+  display: flex;
+  flex-direction: column;
 }
 
 .experience__h1 {
@@ -96,4 +173,8 @@ body {
   text-decoration: underline;
   font-size: 2rem;
   margin-bottom: 10px;
+}
+
+.experience__button {
+  align-self: center;
 }
