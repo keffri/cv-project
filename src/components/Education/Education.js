@@ -77,7 +77,17 @@ class Education extends Component {
   }
 
   cancel() {
-    this.setState((prevState) => ({ editing: !prevState.editing }));
+    this.setState((prevState) => ({
+      editing: !prevState.editing,
+      education: {
+        school: "",
+        major: "",
+        start: "",
+        end: "",
+        id: uniqid(),
+        editing: false,
+      },
+    }));
   }
 
   edit(id) {
@@ -136,7 +146,7 @@ class Education extends Component {
             Add
           </button>
         ) : (
-          <div>
+          <div className="education__buttons">
             <button className="education__button" onClick={this.saveEducation}>
               Save
             </button>
