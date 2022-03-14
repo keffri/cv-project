@@ -14,6 +14,7 @@ class EducationData extends Component {
               id={edu.id}
               data={edu}
               save={this.props.save}
+              delete={this.props.delete}
             />
           ) : (
             <EditedEducation

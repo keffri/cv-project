@@ -24,6 +24,7 @@ class Education extends Component {
     this.addEducation = this.addEducation.bind(this);
     this.saveEducation = this.saveEducation.bind(this);
     this.deleteEducation = this.deleteEducation.bind(this);
+    this.cancel = this.cancel.bind(this);
     this.edit = this.edit.bind(this);
     this.save = this.save.bind(this);
   }
@@ -75,6 +76,10 @@ class Education extends Component {
     });
   }
 
+  cancel() {
+    this.setState((prevState) => ({ editing: !prevState.editing }));
+  }
+
   edit(id) {
     const eduList = [...this.state.educationList];
 
@@ -119,6 +124,7 @@ class Education extends Component {
         <EducationData
           educationList={this.state.educationList}
           delete={this.deleteEducation}
+          cancelEdit={this.cancelEdit}
           edit={this.edit}
           save={this.save}
         />
@@ -130,9 +136,14 @@ class Education extends Component {
             Add
           </button>
         ) : (
-          <button className="education__button" onClick={this.saveEducation}>
-            Save
-          </button>
+          <div>
+            <button className="education__button" onClick={this.saveEducation}>
+              Save
+            </button>
+            <button className="education__button" onClick={this.cancel}>
+              Cancel
+            </button>
+          </div>
         )}
       </div>
     );
