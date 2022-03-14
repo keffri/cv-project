@@ -22,7 +22,7 @@ body {
 
 .general {
   min-height: 225px;
-  width: 800px;
+  width: 600px;
   background-color: #aaa;
 }
 
@@ -51,11 +51,28 @@ body {
   margin-top: 1rem;
 }
 
+.generalData {
+  display: flex;
+  flex-direction: column;
+}
+
+.generalData__p {
+  margin: 0.5rem 0 0.5rem 2rem;
+}
+
+.general--bold {
+  font-weight: bold;
+}
+
+.generalData__button {
+  align-self: center;
+}
+
 /***** EDUCATION *****/
 
 .education {
   min-height: 100px;
-  width: 800px;
+  width: 600px;
   background-color: #bbb;
 }
 
@@ -70,7 +87,7 @@ body {
 
 .experience {
   min-height: 100px;
-  width: 800px;
+  width: 600px;
   background-color: #ccc;
 }
 
