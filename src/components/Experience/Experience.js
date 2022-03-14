@@ -26,6 +26,7 @@ class Experience extends Component {
     this.addExperience = this.addExperience.bind(this);
     this.saveExperience = this.saveExperience.bind(this);
     this.deleteExperience = this.deleteExperience.bind(this);
+    this.cancel = this.cancel.bind(this);
     this.edit = this.edit.bind(this);
     this.save = this.save.bind(this);
   }
@@ -84,6 +85,10 @@ class Experience extends Component {
     });
   }
 
+  cancel() {
+    this.setState((prevState) => ({ editing: !prevState.editing }));
+  }
+
   edit(id) {
     const expList = [...this.state.experienceList];
 
@@ -137,9 +142,17 @@ class Experience extends Component {
             Add
           </button>
         ) : (
-          <button className="experience__button" onClick={this.saveExperience}>
-            Save
-          </button>
+          <div>
+            <button
+              className="experience__button"
+              onClick={this.saveExperience}
+            >
+              Save
+            </button>
+            <button className="experience__button" onClick={this.cancel}>
+              Cancel
+            </button>
+          </div>
         )}
       </div>
     );
