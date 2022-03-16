@@ -1,173 +1,139 @@
 import ExperienceForm from "./ExperienceForm";
 import ExperienceData from "./ExperienceData";
 import uniqid from "uniqid";
+import React, { useState } from "react";
 
-import React, { Component } from "react";
+const Experience = () => {
+  const [editing, setEditing] = useState(false);
+  const [experience, setExperience] = useState({
+    company: "",
+    position: "",
+    start: "",
+    end: "",
+    duties: "",
+    id: uniqid(),
+    editing: false,
+  });
+  const [experienceList, setExperienceList] = useState([]);
 
-class Experience extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      editing: false,
-      experience: {
-        company: "",
-        position: "",
-        start: "",
-        end: "",
-        duties: "",
-        id: uniqid(),
-        editing: false,
-      },
-      experienceList: [],
-    };
-
-    this.handleChange = this.handleChange.bind(this);
-    this.addExperience = this.addExperience.bind(this);
-    this.saveExperience = this.saveExperience.bind(this);
-    this.deleteExperience = this.deleteExperience.bind(this);
-    this.cancel = this.cancel.bind(this);
-    this.edit = this.edit.bind(this);
-    this.save = this.save.bind(this);
-  }
-
-  handleChange(e) {
+  const handleChange = (e) => {
     const { name, value } = e.target;
 
-    this.setState({
-      ...this.state,
-      experience: {
-        ...this.state.experience,
-        [name]: value,
-      },
+    setExperience({
+      ...experience,
+      [name]: value,
     });
-  }
+  };
 
-  addExperience(e) {
+  const addExperience = (e) => {
     e.preventDefault();
-    this.setState((prevState) => ({ editing: !prevState.editing }));
-  }
+    setEditing(!editing);
+  };
 
-  saveExperience(e) {
+  const saveExperience = (e) => {
     e.preventDefault();
-    const experience = this.state.experience;
+    const currentExperience = experience;
     if (
-      !experience.company ||
-      !experience.position ||
-      !experience.start ||
-      !experience.duties
+      !currentExperience.company ||
+      !currentExperience.position ||
+      !currentExperience.start ||
+      !currentExperience.duties
     ) {
       alert("Please complete the entire form.");
       return;
     }
-
-    this.setState((prevState) => ({
-      editing: !prevState.editing,
-      experience: {
-        company: "",
-        position: "",
-        start: "",
-        end: "",
-        duties: "",
-        id: uniqid(),
-        editing: false,
-      },
-      experienceList: [...prevState.experienceList, experience],
-    }));
-  }
-
-  deleteExperience(id) {
-    const experience = [...this.state.experienceList];
-    const newExperience = experience.filter((exp) => exp.id !== id);
-    this.setState({
-      ...this.state,
-      experienceList: newExperience,
+    setEditing(!editing);
+    setExperience({
+      company: "",
+      position: "",
+      start: "",
+      end: "",
+      duties: "",
+      id: uniqid(),
+      editing: false,
     });
-  }
+    setExperienceList((prevExperienceList) => [
+      ...prevExperienceList,
+      currentExperience,
+    ]);
+  };
 
-  cancel() {
-    this.setState((prevState) => ({
-      editing: !prevState.editing,
-      experience: {
-        company: "",
-        position: "",
-        start: "",
-        end: "",
-        duties: "",
-        id: uniqid(),
-        editing: false,
-      },
-    }));
-  }
+  const deleteExperience = (id) => {
+    const experienceListCopy = [...experienceList];
+    const newExperienceList = experienceListCopy.filter((edu) => edu.id !== id);
+    setExperienceList(newExperienceList);
+  };
 
-  edit(id) {
-    const expList = [...this.state.experienceList];
+  const cancel = () => {
+    setEditing(!editing);
+    setExperience({
+      company: "",
+      position: "",
+      start: "",
+      end: "",
+      duties: "",
+      id: uniqid(),
+      editing: false,
+    });
+  };
+
+  const edit = (id) => {
+    const expList = [...experienceList];
 
     let currentExperience = expList.filter((exp) => exp.id === id)[0];
     const currentExperienceIndex = expList.indexOf(currentExperience);
     currentExperience.editing = !currentExperience.editing;
 
     expList[currentExperienceIndex] = currentExperience;
+    setExperienceList(expList);
+  };
 
-    this.setState({
-      ...this.state,
-      experienceList: expList,
-    });
-  }
-
-  save(id, state) {
+  const save = (id, state) => {
     if (!state.company || !state.position || !state.start || !state.duties) {
       alert("Please complete the entire form.");
       return;
     }
-    const expList = [...this.state.experienceList];
+
+    const expList = [...experienceList];
 
     let currentExperience = expList.filter((exp) => exp.id === id)[0];
     const currentExperienceIndex = expList.indexOf(currentExperience);
+
     currentExperience = { ...state, editing: !currentExperience.editing };
 
     expList[currentExperienceIndex] = currentExperience;
 
-    this.setState({
-      ...this.state,
-      experienceList: expList,
-    });
-  }
+    setExperienceList(expList);
+  };
 
-  render() {
-    const { editing } = this.state;
-    return (
-      <div className="experience">
-        <h1 className="experience__h1">Experience</h1>
-        <ExperienceData
-          experienceList={this.state.experienceList}
-          delete={this.deleteExperience}
-          edit={this.edit}
-          save={this.save}
-        />
-        {editing && (
-          <ExperienceForm data={this.state} handleChange={this.handleChange} />
-        )}
-        {!editing ? (
-          <button className="experience__button" onClick={this.addExperience}>
-            Add
+  return (
+    <div className="experience">
+      <h1 className="experience__h1">Experience</h1>
+      <ExperienceData
+        experienceList={experienceList}
+        delete={deleteExperience}
+        edit={edit}
+        save={save}
+      />
+      {editing && (
+        <ExperienceForm data={experience} handleChange={handleChange} />
+      )}
+      {!editing ? (
+        <button className="experience__button" onClick={addExperience}>
+          Add
+        </button>
+      ) : (
+        <div className="experience__buttons">
+          <button className="experience__button" onClick={saveExperience}>
+            Save
           </button>
-        ) : (
-          <div className="experience__buttons">
-            <button
-              className="experience__button"
-              onClick={this.saveExperience}
-            >
-              Save
-            </button>
-            <button className="experience__button" onClick={this.cancel}>
-              Cancel
-            </button>
-          </div>
-        )}
-      </div>
-    );
-  }
-}
+          <button className="experience__button" onClick={cancel}>
+            Cancel
+          </button>
+        </div>
+      )}
+    </div>
+  );
+};
 
 export default Experience;

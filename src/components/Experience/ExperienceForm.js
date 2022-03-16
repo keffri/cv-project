@@ -10,7 +10,7 @@ const ExperienceForm = (props) => {
           placeholder="Weeb Tech"
           type="text"
           name="company"
-          value={props.data.experience.company}
+          value={props.data.company}
           onChange={props.handleChange}
         />
       </label>
@@ -21,7 +21,7 @@ const ExperienceForm = (props) => {
           placeholder="Junior Developer"
           type="text"
           name="position"
-          value={props.data.experience.position}
+          value={props.data.position}
           onChange={props.handleChange}
         />
       </label>
@@ -31,7 +31,7 @@ const ExperienceForm = (props) => {
           className="experienceForm__input"
           type="date"
           name="start"
-          value={props.data.experience.start}
+          value={props.data.start}
           onChange={props.handleChange}
         />
       </label>
@@ -41,7 +41,7 @@ const ExperienceForm = (props) => {
           className="experienceForm__input"
           type="date"
           name="end"
-          value={props.data.experience.end}
+          value={props.data.end}
           onChange={props.handleChange}
         />
       </label>
@@ -52,7 +52,7 @@ const ExperienceForm = (props) => {
           placeholder="Coding"
           type="text"
           name="duties"
-          value={props.data.experience.duties}
+          value={props.data.duties}
           onChange={props.handleChange}
         />
       </label>
