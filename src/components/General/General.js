@@ -15,10 +15,10 @@ const General = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
 
-    setGeneral((general) => ({
+    setGeneral({
       ...general,
       [name]: value,
-    }));
+    });
   };
 
   const handleSubmit = (e) => {
