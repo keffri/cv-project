@@ -1,97 +1,81 @@
 import EducationForm from "./EducationForm";
 import EducationData from "./EducationData";
 import uniqid from "uniqid";
-import React, { Component } from "react";
+import React, { useState } from "react";
 
-class Education extends Component {
-  constructor(props) {
-    super(props);
+const Education = () => {
+  const [editing, setEditing] = useState(false);
+  const [education, setEducation] = useState({
+    school: "",
+    major: "",
+    start: "",
+    end: "",
+    id: uniqid(),
+    editing: false,
+  });
+  const [educationList, setEducationList] = useState([]);
 
-    this.state = {
-      editing: false,
-      education: {
-        school: "",
-        major: "",
-        start: "",
-        end: "",
-        id: uniqid(),
-        editing: false,
-      },
-      educationList: [],
-    };
-
-    this.handleChange = this.handleChange.bind(this);
-    this.addEducation = this.addEducation.bind(this);
-    this.saveEducation = this.saveEducation.bind(this);
-    this.deleteEducation = this.deleteEducation.bind(this);
-    this.cancel = this.cancel.bind(this);
-    this.edit = this.edit.bind(this);
-    this.save = this.save.bind(this);
-  }
-
-  handleChange(e) {
+  const handleChange = (e) => {
     const { name, value } = e.target;
 
-    this.setState({
-      ...this.state,
-      education: {
-        ...this.state.education,
-        [name]: value,
-      },
+    setEducation({
+      ...education,
+      [name]: value,
     });
-  }
+  };
 
-  addEducation(e) {
+  const addEducation = (e) => {
     e.preventDefault();
-    this.setState((prevState) => ({ editing: !prevState.editing }));
-  }
+    setEditing(!editing);
+  };
 
-  saveEducation(e) {
+  const saveEducation = (e) => {
     e.preventDefault();
-    const education = this.state.education;
-    if (!education.school || !education.major || !education.start) {
+
+    const currentEducation = education;
+    if (
+      !currentEducation.school ||
+      !currentEducation.major ||
+      !currentEducation.start
+    ) {
       alert("Please complete the entire form.");
       return;
     }
-    this.setState((prevState) => ({
-      editing: !prevState.editing,
-      education: {
-        school: "",
-        major: "",
-        start: "",
-        end: "",
-        id: uniqid(),
-        editing: false,
-      },
-      educationList: [...prevState.educationList, education],
-    }));
-  }
-
-  deleteEducation(id) {
-    const education = [...this.state.educationList];
-    const newEducation = education.filter((edu) => edu.id !== id);
-    this.setState({
-      ...this.state,
-      educationList: newEducation,
+    setEditing(!editing);
+    setEducation({
+      school: "",
+      major: "",
+      start: "",
+      end: "",
+      id: uniqid(),
+      editing: false,
     });
-  }
+    setEducationList((prevEducationList) => [
+      ...prevEducationList,
+      currentEducation,
+    ]);
+  };
 
-  cancel() {
-    this.setState((prevState) => ({
-      editing: !prevState.editing,
-      education: {
-        school: "",
-        major: "",
-        start: "",
-        end: "",
-        id: uniqid(),
-        editing: false,
-      },
-    }));
-  }
+  const deleteEducation = (id) => {
+    const educationListCopy = [...educationList];
+    const newEducationList = educationListCopy.filter((edu) => edu.id !== id);
+    setEducationList(newEducationList);
+  };
 
-  edit(id) {
-    const eduList = [...this.state.educationList];
+  const cancel = () => {
+    setEditing(!editing);
+    setEducation({
+      school: "",
+      major: "",
+      start: "",
+      end: "",
+      id: uniqid(),
+      editing: false,
+    });
+  };
+
+  const edit = (id) => {
+    const eduList = [...educationList];
 
     let currentEducation = eduList.filter((edu) => edu.id === id)[0];
     const currentEducationIndex = eduList.indexOf(currentEducation);
@@ -99,65 +83,56 @@ class Education extends Component {
 
     eduList[currentEducationIndex] = currentEducation;
 
-    this.setState({
-      ...this.state,
-      educationList: eduList,
-    });
-  }
+    setEducationList(eduList);
+  };
 
-  save(id, state) {
+  const save = (id, state) => {
     if (!state.school || !state.major || !state.start) {
       alert("Please complete the entire form.");
       return;
     }
-    const eduList = [...this.state.educationList];
-
+    const eduList = [...educationList];
     let currentEducation = eduList.filter((edu) => edu.id === id)[0];
-
     const currentEducationIndex = eduList.indexOf(currentEducation);
-    currentEducation = { ...state, editing: !currentEducation.editing };
 
+    currentEducation = {
+      ...state,
+      editing: !currentEducation.editing,
+    };
     eduList[currentEducationIndex] = currentEducation;
 
-    this.setState({
-      ...this.state,
-      educationList: eduList,
-    });
-  }
+    setEducationList(eduList);
+  };
 
-  render() {
-    const { editing } = this.state;
-
-    return (
-      <div className="education">
-        <h1 className="education__h1">Education</h1>
-        <EducationData
-          educationList={this.state.educationList}
-          delete={this.deleteEducation}
-          cancelEdit={this.cancelEdit}
-          edit={this.edit}
-          save={this.save}
-        />
-        {editing && (
-          <EducationForm data={this.state} handleChange={this.handleChange} />
-        )}
-        {!editing ? (
-          <button className="education__button" onClick={this.addEducation}>
-            Add
+  return (
+    <div className="education">
+      <h1 className="education__h1">Education</h1>
+      <EducationData
+        educationList={educationList}
+        delete={deleteEducation}
+        cancelEdit={cancel}
+        edit={edit}
+        save={save}
+      />
+      {editing && (
+        <EducationForm data={education} handleChange={handleChange} />
+      )}
+      {!editing ? (
+        <button className="education__button" onClick={addEducation}>
+          Add
+        </button>
+      ) : (
+        <div className="education__buttons">
+          <button className="education__button" onClick={saveEducation}>
+            Save
           </button>
-        ) : (
-          <div className="education__buttons">
-            <button className="education__button" onClick={this.saveEducation}>
-              Save
-            </button>
-            <button className="education__button" onClick={this.cancel}>
-              Cancel
-            </button>
-          </div>
-        )}
-      </div>
-    );
-  }
-}
+          <button className="education__button" onClick={cancel}>
+            Cancel
+          </button>
+        </div>
+      )}
+    </div>
+  );
+};
 
 export default Education;

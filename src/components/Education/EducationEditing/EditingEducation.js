@@ -1,77 +1,69 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 
-class EditingEducation extends Component {
-  constructor(props) {
-    super(props);
+const EditingEducation = (props) => {
+  const [education, setEducation] = useState(props.data);
 
-    this.state = this.props.data;
-
-    this.handleChange = this.handleChange.bind(this);
-  }
-
-  handleChange(e) {
+  const handleChange = (e) => {
     const { name, value } = e.target;
 
-    this.setState({
-      ...this.state,
+    setEducation({
+      ...education,
       [name]: value,
     });
-  }
+  };
 
-  render() {
-    return (
-      <div className="educationEditing">
-        <form className="educationEditing__form">
-          <label className="educationEditing__label">
-            School:
-            <input
-              className="educationEditing__input"
-              type="text"
-              name="school"
-              value={this.state.school}
-              onChange={this.handleChange}
-            />
-          </label>
-          <label className="educationEditing__label">
-            Major:
-            <input
-              className="educationEditing__input"
-              type="text"
-              name="major"
-              value={this.state.major}
-              onChange={this.handleChange}
-            />
-          </label>
-          <label className="educationEditing__label">
-            Date:
-            <input
-              className="educationEditing__input"
-              type="date"
-              name="start"
-              value={this.state.start}
-              onChange={this.handleChange}
-            />
-          </label>
-          <label className="educationEditing__label">
-            End:
-            <input
-              className="educationEditing__input"
-              type="date"
-              name="end"
-              value={this.state.end}
-              onChange={this.handleChange}
-            />
-          </label>
-        </form>
-        <button
-          className="educationEditing__button"
-          onClick={() => this.props.save(this.props.id, this.state)}
-        >
-          Save
-        </button>
-      </div>
-    );
-  }
-}
+  return (
+    <div className="educationEditing">
+      <form className="educationEditing__form">
+        <label className="educationEditing__label">
+          School:
+          <input
+            className="educationEditing__input"
+            type="text"
+            name="school"
+            value={education.school}
+            onChange={handleChange}
+          />
+        </label>
+        <label className="educationEditing__label">
+          Major:
+          <input
+            className="educationEditing__input"
+            type="text"
+            name="major"
+            value={education.major}
+            onChange={handleChange}
+          />
+        </label>
+        <label className="educationEditing__label">
+          Date:
+          <input
+            className="educationEditing__input"
+            type="date"
+            name="start"
+            value={education.start}
+            onChange={handleChange}
+          />
+        </label>
+        <label className="educationEditing__label">
+          End:
+          <input
+            className="educationEditing__input"
+            type="date"
+            name="end"
+            value={education.end}
+            onChange={handleChange}
+          />
+        </label>
+      </form>
+      <button
+        className="educationEditing__button"
+        onClick={() => props.save(props.id, education)}
+      >
+        Save
+      </button>
+    </div>
+  );
+};
 
 export default EditingEducation;
